@@ -1,0 +1,949 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: ShoppingFlow.spec.ts >> Scenario 02 Product Validation 
+- Location: tests\ShoppingFlow.spec.ts:52:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: locator('//span[contains(text(),\'Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large…\')]/ancestor::div[@class=\'a-row sc-list-item sc-java-remote-feature\']//div[@class=\'a-stepper-inner-container\']//span[text()=\'2\']')
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for locator('//span[contains(text(),\'Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large…\')]/ancestor::div[@class=\'a-row sc-list-item sc-java-remote-feature\']//div[@class=\'a-stepper-inner-container\']//span[text()=\'2\']')
+
+```
+
+```yaml
+- navigation "Shortcuts menu":
+  - heading "Skip to" [level=2]
+  - list "Skip to":
+    - listitem:
+      - link "main content":
+        - /url: "#skippedLink"
+        - text: Main content
+    - listitem:
+      - link "Shopping cart":
+        - /url: "#sc-active-cart"
+        - text: Your Amazon Cart
+    - listitem:
+      - link "Saved for later":
+        - /url: "#sc-saved-cart-caption"
+        - text: Saved for Later
+    - listitem:
+      - link "Buy it again":
+        - /url: "#sc-buy-it-again-caption"
+        - text: Buy it Again
+  - heading "Keyboard shortcuts" [level=2]
+  - list "Keyboard shortcuts":
+    - listitem:
+      - link "Search, alt, forward slash":
+        - /url: javascript:void(0)
+    - listitem:
+      - link "Cart, shift, alt, c":
+        - /url: javascript:void(0)
+    - listitem:
+      - link "Home, shift, alt, h":
+        - /url: javascript:void(0)
+    - listitem:
+      - link "Your orders, shift, alt, o":
+        - /url: javascript:void(0)
+    - listitem:
+      - button "Show/hide shortcuts, shift, alt, z"
+  - text: To move between items, use your keyboard's up or down arrows.
+- banner:
+  - navigation "Primary":
+    - link "Amazon":
+      - /url: /ref=nav_logo
+    - button "Delivering to Nashville 37217 Update location"
+    - search:
+      - text: All
+      - combobox "Select the department you want to search in":
+        - option "All Departments" [selected]
+        - option "Alexa Skills"
+        - option "Amazon Autos"
+        - option "Amazon Devices"
+        - option "Amazon Fresh"
+        - option "Amazon Global Store"
+        - option "Amazon Haul"
+        - option "Amazon One Medical"
+        - option "Amazon Pharmacy"
+        - option "Amazon Resale"
+        - option "Appliances"
+        - option "Apps & Games"
+        - option "Arts, Crafts & Sewing"
+        - option "Audible Books & Originals"
+        - option "Automotive Parts & Accessories"
+        - option "Baby"
+        - option "Beauty & Personal Care"
+        - option "Books"
+        - option "CDs & Vinyl"
+        - option "Cell Phones & Accessories"
+        - option "Clothing, Shoes & Jewelry"
+        - option "Women's Clothing, Shoes & Jewelry"
+        - option "Men's Clothing, Shoes & Jewelry"
+        - option "Girl's Clothing, Shoes & Jewelry"
+        - option "Boy's Clothing, Shoes & Jewelry"
+        - option "Baby Clothing, Shoes & Jewelry"
+        - option "Collectibles & Fine Art"
+        - option "Computers"
+        - option "Credit and Payment Cards"
+        - option "Digital Music"
+        - option "Electronics"
+        - option "Garden & Outdoor"
+        - option "Gift Cards"
+        - option "Grocery & Gourmet Food"
+        - option "Handmade"
+        - option "Health, Household & Baby Care"
+        - option "Home & Business Services"
+        - option "Home & Kitchen"
+        - option "Industrial & Scientific"
+        - option "Just for Prime"
+        - option "Kindle Store"
+        - option "Luggage & Travel Gear"
+        - option "Luxury Stores"
+        - option "Magazine Subscriptions"
+        - option "Movies & TV"
+        - option "Musical Instruments"
+        - option "Office Products"
+        - option "Pet Supplies"
+        - option "Premium Beauty"
+        - option "Prime Video"
+        - option "Same-Day Store"
+        - option "Smart Home"
+        - option "Software"
+        - option "Sports & Outdoors"
+        - option "Subscribe & Save"
+        - option "Subscription Boxes"
+        - option "Tools & Home Improvement"
+        - option "Toys & Games"
+        - option "Under $10"
+        - option "Video Games"
+        - option "Whole Foods Market"
+      - searchbox "Search Amazon"
+      - button "Go"
+    - link "Choose a language for shopping in Amazon United States. The current selection is English (EN).":
+      - /url: /customer-preferences/edit?ie=UTF8&preferencesReturnUrl=%2F&ref_=topnav_lang
+      - img "United States"
+      - text: EN
+    - link "Hello, Ashish Account & Lists":
+      - /url: https://www.amazon.com/gp/css/homepage.html?ref_=nav_youraccount_btn
+    - button "Expand Account and Lists"
+    - link "Returns & Orders":
+      - /url: /gp/css/order-history?ref_=nav_orders_first
+    - link "2 items in cart":
+      - /url: /gp/cart/view.html?ref_=nav_cart
+    - button "Open All Categories Menu": All
+    - button "Open Alexa panel"
+    - button "Join Prime"
+    - list:
+      - listitem:
+        - link "Today's Deals":
+          - /url: /deals?ref_=nav_cs_gb
+      - listitem:
+        - link "Coupons":
+          - /url: /coupons?ref_=nav_cs_coupons
+      - listitem:
+        - link "Prime Video":
+          - /url: /gp/video/storefront?ref_=nav_cs_prime_video
+      - listitem:
+        - link "Browsing History":
+          - /url: /gp/history?ref_=nav_cs_timeline
+        - button "Browsing History Details"
+      - listitem:
+        - link "Buy Again":
+          - /url: /gp/buyagain?ie=UTF8&ref_=nav_cs_buy_again
+      - listitem:
+        - link "Best Sellers":
+          - /url: /gp/bestsellers/?ref_=nav_cs_bestsellers
+      - listitem:
+        - link "Sell":
+          - /url: /b/?_encoding=UTF8&ld=AZUSSOA-sell&node=12766669011&ref_=nav_cs_sell
+      - listitem:
+        - link "New Releases":
+          - /url: /gp/new-releases/?ref_=nav_cs_newreleases
+      - listitem:
+        - link "Gift Cards":
+          - /url: /gift-cards/b/?ie=UTF8&node=2238192011&ref_=nav_cs_gc
+      - listitem:
+        - link "Registry":
+          - /url: /gp/browse.html?node=16115931011&ref_=nav_cs_registry
+      - listitem:
+        - link "Customer Service":
+          - /url: /hz/contact-us/foresight/hubgateway?ref_=nav_cs_fs_hybridhub_navbar_c
+      - listitem:
+        - link "Kindle Books":
+          - /url: /Kindle-eBooks/b/?ie=UTF8&node=154606011&ref_=nav_cs_kindle_books
+      - listitem:
+        - link "Books":
+          - /url: /books-used-books-textbooks/b/?ie=UTF8&node=283155&ref_=nav_cs_books
+      - listitem:
+        - link "Everyday":
+          - /url: /everyday-essentials?ref_=nav_cs_ee
+      - listitem:
+        - link "Household, Health & Baby Care":
+          - /url: /health-personal-care-nutrition-fitness/b/?ie=UTF8&node=3760901&ref_=nav_cs_hpc
+      - listitem:
+        - link "Groceries":
+          - /url: /fmc/grocery-gateway?gsc=fe16aGPfFs46S&ref_=nav_cs_groceries
+      - listitem:
+        - link "Amazon Basics":
+          - /url: /Amazon_Basics?channel=discovbar&field-lbr_brands_browse-bin=AmazonBasics&ref_=nav_cs_amazonbasics
+      - listitem:
+        - link "Music":
+          - /url: /music/player?ref_=nav_cs_music
+      - listitem:
+        - link "Home Improvement":
+          - /url: /Tools-and-Home-Improvement/b/?ie=UTF8&node=228013&ref_=nav_cs_hi
+      - listitem:
+        - link "Whole Foods":
+          - /url: /alm/storefront?almBrandId=VUZHIFdob2xlIEZvb2Rz&ref_=nav_cs_whole_foods
+      - listitem:
+        - link "Amazon Haul":
+          - /url: /haul/store?ref_=nav_cs_hul_disb
+      - listitem:
+        - link "Livestreams":
+          - /url: /live?ref_=nav_cs_amazonlive
+      - listitem:
+        - link "Medical Care":
+          - /url: https://health.amazon.com/?ref_=nav_cs_medical_care_health_home
+        - button "Medical Care Details"
+      - listitem:
+        - link "Subscribe & Save":
+          - /url: /auto-deliveries/landing?ref_=nav_cs_sns
+      - listitem:
+        - link "TV & Video":
+          - /url: /tvs/b/?ie=UTF8&node=172659&ref_=nav_cs_tv
+      - listitem:
+        - link "Audible":
+          - /url: /Audible-Books-and-Originals/b/?ie=UTF8&node=18145289011&ref_=nav_cs_audible
+      - listitem:
+        - link "Beauty & Personal Care":
+          - /url: /Beauty-Makeup-Skin-Hair-Products/b/?ie=UTF8&node=3760911&ref_=nav_cs_beauty
+      - listitem:
+        - link "Pharmacy":
+          - /url: https://pharmacy.amazon.com/?nodl=0&ref_=nav_cs_pharmacy
+      - listitem:
+        - link "Fashion":
+          - /url: /amazon-fashion/b/?ie=UTF8&node=7141123011&ref_=nav_cs_fashion
+      - listitem:
+        - link "Automotive":
+          - /url: /automotive-auto-truck-replacements-parts/b/?ie=UTF8&node=15684181&ref_=nav_cs_automotive
+      - listitem:
+        - link "Health AI":
+          - /url: https://health.amazon.com/health-ai?ref_=nav_cs_health_ai
+      - listitem:
+        - link "Computers":
+          - /url: /computer-pc-hardware-accessories-add-ons/b/?ie=UTF8&node=541966&ref_=nav_cs_pc
+      - listitem:
+        - link "Shop By Interest":
+          - /url: /finds?ref_=nav_cs_foundit
+      - listitem:
+        - link "Custom Products":
+          - /url: /Amazon-Custom/b/?ie=UTF8&node=11032013011&ref_=nav_cs_custom
+      - listitem:
+        - link "Keep Shopping For":
+          - /url: /hz/mobile/mission?ref_=nav_cs_ci_mcx_mi_d_db
+      - listitem:
+        - link "Pet Supplies":
+          - /url: /pet-shops-dogs-cats-hamsters-kittens/b/?ie=UTF8&node=2619533011&ref_=nav_cs_pets
+      - listitem:
+        - link "Smart Home":
+          - /url: /Smart-Home/b/?ie=UTF8&node=6563140011&ref_=nav_cs_smart_home
+      - listitem:
+        - link "Video Games":
+          - /url: /computer-video-games-hardware-accessories/b/?ie=UTF8&node=468642&ref_=nav_cs_video_games
+      - listitem:
+        - link "Gift Shop":
+          - /url: /gcx/Gifts-for-Everyone/gfhz/?ref_=nav_cs_giftfinder
+      - listitem:
+        - link "Handmade":
+          - /url: /gp/browse.html?node=120955898011&ref_=nav_cs_handmade
+      - listitem:
+        - link "1 Hour Delivery":
+          - /url: /fmc/ssd-storefront?gsc=fe16aGPfFs46S&speed=1HR&ref_=nav_cs_SSD_1hr_nav_storefront
+      - listitem:
+        - link "Home Audio & Theater":
+          - /url: /Home-Audio-Electronics/b/?ie=UTF8&node=667846011&ref_=nav_cs_home_audio
+      - listitem:
+        - link "Luxury":
+          - /url: /luxurystores?ref_=nav_cs_luxury_disc
+      - listitem:
+        - link "Works with Alexa":
+          - /url: /gp/browse.html?node=73846268011&ref_=nav_cs_wwa
+      - listitem:
+        - link "Amazon Home":
+          - /url: /home-garden-kitchen-furniture-bedding/b/?ie=UTF8&node=1055398&ref_=nav_cs_home
+      - listitem:
+        - link "Sports & Outdoors":
+          - /url: /sports-outdoors/b/?ie=UTF8&node=3375251&ref_=nav_cs_sports
+      - listitem:
+        - link "Toys & Games":
+          - /url: /toys/b/?ie=UTF8&node=165793011&ref_=nav_cs_toys
+      - listitem:
+        - link "Baby":
+          - /url: /baby-car-seats-strollers-bedding/b/?ie=UTF8&node=165796011&ref_=nav_cs_baby
+- main:
+  - 'link "Item in your cart $10 instant gift card Ashish, get $10 off instantly upon approval for the Amazon Store Card. Current subtotal: $112.46 Gift Card savings: - $10.00 Cost after savings: $102.46 Learn more"':
+    - /url: /dp/product/B008A0GNA8?pr=conplcc&inc=023594a7-fd3a-4290-a332-5819e1ac259e&ts=7z3y2eu0cvwnpl2o0o9k0c9x8bz2qc0&place=vc&plattr=math&imp=bf36cd9e-bd31-49af-b275-3995d463d196&ad=APSC&mru=%2Fcart
+    - img "Item in your cart"
+    - strong: $10 instant gift card
+    - text: Ashish,
+    - strong: get $10 off instantly
+    - text: upon approval for the Amazon Store Card.
+    - table:
+      - rowgroup:
+        - 'row "Current subtotal: $112.46"':
+          - cell "Current subtotal:"
+          - cell "$112.46"
+        - 'row "Gift Card savings: - $10.00"':
+          - cell "Gift Card savings:"
+          - cell "- $10.00"
+        - 'row "Cost after savings: $102.46"':
+          - cell "Cost after savings:"
+          - cell "$102.46"
+  - heading "All Carts" [level=1]
+  - status: Your order qualifies for FREE delivery. Choose this option at checkout.
+  - 'heading "Amazon Subtotal (2 items): $112.46" [level=3]'
+  - checkbox "This order contains a gift"
+  - text: This order contains a gift
+  - button "Proceed to checkout Check out Amazon Cart": Proceed to checkout
+  - img "Amazon Prime Logo"
+  - heading "Fast, FREE delivery on eligible items with a 30-day trial for $0" [level=1]
+  - button "Accept your free trial"
+  - heading "Related products with fast delivery" [level=3]
+  - list:
+    - listitem:
+      - link "HAPPRUN Native 1080P Outdoor Smart Projector-Standard | Native 1080P • Mini & Portable • Easy Setup • Built-in Speaker • Indoor & Outdoor • Phone, Laptop & PS5 Compatible":
+        - /url: /HAPPRUN-Native-1080P-Outdoor-Projector-Standard/dp/B0B28G5Y4R/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_1/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0B28G5Y4R&psc=1
+      - link "4.3 out of 5 stars, 13,698 ratings":
+        - /url: /product-reviews/B0B28G5Y4R/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_1_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0B28G5Y4R
+      - link "-23%":
+        - /url: /HAPPRUN-Native-1080P-Outdoor-Projector-Standard/dp/B0B28G5Y4R/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_1/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0B28G5Y4R&psc=1
+      - link "$84.93":
+        - /url: /HAPPRUN-Native-1080P-Outdoor-Projector-Standard/dp/B0B28G5Y4R/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_1/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0B28G5Y4R&psc=1
+      - 'link "List: $109.99"':
+        - /url: /HAPPRUN-Native-1080P-Outdoor-Projector-Standard/dp/B0B28G5Y4R/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_1/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0B28G5Y4R&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping by Amazon
+      - button "Add to cart, HAPPRUN Native 1080P Outdoor Smart Projector-Standard | Native 1080P • Mini & Portable • Easy Setup • Built-in Speaker • Indoor & Outdoor • Phone, Laptop & PS5 Compatible"
+    - listitem:
+      - link "INSIGNIA 50\" Class F50 Series LED 4K UHD Smart Fire TV, Voice Remote with Alexa, Stream Live TV Without Cable":
+        - /url: /INSIGNIA-50-inch-4K-UHD-Fire-TV/dp/B0F19KLHG3/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_2/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0F19KLHG3&psc=1
+      - link "4.3 out of 5 stars, 11,586 ratings":
+        - /url: /product-reviews/B0F19KLHG3/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_2_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0F19KLHG3
+      - link "-40%":
+        - /url: /INSIGNIA-50-inch-4K-UHD-Fire-TV/dp/B0F19KLHG3/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_2/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0F19KLHG3&psc=1
+      - link "$179.99":
+        - /url: /INSIGNIA-50-inch-4K-UHD-Fire-TV/dp/B0F19KLHG3/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_2/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0F19KLHG3&psc=1
+      - 'link "List: $299.99"':
+        - /url: /INSIGNIA-50-inch-4K-UHD-Fire-TV/dp/B0F19KLHG3/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_2/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0F19KLHG3&psc=1
+      - text: Get it Aug 19 - 21 FREE Shipping
+      - button "Add to cart, INSIGNIA 50\" Class F50 Series LED 4K UHD Smart Fire TV, Voice Remote with Alexa, Stream Live TV Without Cable"
+    - listitem:
+      - link "Ortizan X10 Portable Bluetooth Speaker (1st Gen), IPX7 Waterproof, Wireless | Big Sound and Deep Bass, TWS Pairing, 30Hrs of Playtime, for Home/Party/Outdoor/Beach, Birthday Gifts for Men Women - Black":
+        - /url: /Ortizan-Portable-Bluetooth-Waterproof-Wireless/dp/B08FDPW8KR/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_3/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B08FDPW8KR&psc=1
+      - link "4.5 out of 5 stars, 48,912 ratings":
+        - /url: /product-reviews/B08FDPW8KR/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_3_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B08FDPW8KR
+      - link "-36%":
+        - /url: /Ortizan-Portable-Bluetooth-Waterproof-Wireless/dp/B08FDPW8KR/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_3/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B08FDPW8KR&psc=1
+      - link "$31.99":
+        - /url: /Ortizan-Portable-Bluetooth-Waterproof-Wireless/dp/B08FDPW8KR/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_3/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B08FDPW8KR&psc=1
+      - 'link "List Price: $49.99"':
+        - /url: /Ortizan-Portable-Bluetooth-Waterproof-Wireless/dp/B08FDPW8KR/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_3/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B08FDPW8KR&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping on orders over $35 shipped by Amazon
+      - link "See all buying options":
+        - /url: /Ortizan-Portable-Bluetooth-Waterproof-Wireless/dp/B08FDPW8KR/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_3_atc_o/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B08FDPW8KR&psc=1
+    - listitem:
+      - link "Tidal Tank Tube - The Original Aqua Bag - Water Weight Bag up to 79 lbs - Adjustable Workout Sand Bags Weights Alternative - Portable Sandbag Fitness Equipment Set, Home Exercise Gym - Including App":
+        - /url: /Tidal-Tank-Alternative-Adjustable-Stability/dp/B07R3DP989/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_4/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B07R3DP989&psc=1
+      - link "4.8 out of 5 stars, 1,681 ratings":
+        - /url: /product-reviews/B07R3DP989/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_4_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B07R3DP989
+      - link "-18%":
+        - /url: /Tidal-Tank-Alternative-Adjustable-Stability/dp/B07R3DP989/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_4/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B07R3DP989&psc=1
+      - link "$64.90":
+        - /url: /Tidal-Tank-Alternative-Adjustable-Stability/dp/B07R3DP989/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_4/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B07R3DP989&psc=1
+      - 'link "List: $79.00"':
+        - /url: /Tidal-Tank-Alternative-Adjustable-Stability/dp/B07R3DP989/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_4/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B07R3DP989&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping by Amazon
+      - button "Add to cart, Tidal Tank Tube - The Original Aqua Bag - Water Weight Bag up to 79 lbs - Adjustable Workout Sand Bags Weights Alternative - Portable Sandbag Fitness Equipment Set, Home Exercise Gym - Including App"
+    - listitem:
+      - link "Apple iPhone SE 3rd Gen, 64GB, Midnight - Unlocked (Renewed)":
+        - /url: /Apple-iPhone-SE-3rd-Midnight/dp/B0BDY71GRG/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_5/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0BDY71GRG&psc=1
+      - link "3.9 out of 5 stars, 5,862 ratings":
+        - /url: /product-reviews/B0BDY71GRG/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_5_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0BDY71GRG
+      - link "$137.00":
+        - /url: /Apple-iPhone-SE-3rd-Midnight/dp/B0BDY71GRG/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_5/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0BDY71GRG&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping by Amazon
+      - button "Add to cart, Apple iPhone SE 3rd Gen, 64GB, Midnight - Unlocked (Renewed)"
+    - listitem:
+      - link "OCEANBROAD Emergency Paddle 21''-42''（Assembling Required）/26''-54'' | Boat Paddle, Canoe/Kayak Paddle, Telescoping Paddle, Collapsible Paddle, PWC/Boating/Pontoon/Jet Ski Accessories":
+        - /url: /OCEANBROAD-Telescoping-Emergency-Collapsible-Aluminium/dp/B0CRR7P54N/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_6/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0CRR7P54N&psc=1
+      - link "4.5 out of 5 stars, 1,854 ratings":
+        - /url: /product-reviews/B0CRR7P54N/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_6_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0CRR7P54N
+      - link "$15.99":
+        - /url: /OCEANBROAD-Telescoping-Emergency-Collapsible-Aluminium/dp/B0CRR7P54N/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_6/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0CRR7P54N&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping on orders over $35 shipped by Amazon
+      - button "Add to cart, OCEANBROAD Emergency Paddle 21''-42''（Assembling Required）/26''-54'' | Boat Paddle, Canoe/Kayak Paddle, Telescoping Paddle, Collapsible Paddle, PWC/Boating/Pontoon/Jet Ski Accessories"
+    - listitem:
+      - link "Eureka Vacuum Cleaners for Home,Airspeed Ultra-Lightweight, NEU10AE5 | Senior-Friendly 7.7 lb Pet Hair Upright Vacuum, Carpet & Hard Floor, Brush, Crevice Tool, Washable Filter, Blue":
+        - /url: /Airspeed-Ultra-Lightweight-Compact-Bagless-Replacement/dp/B0923VNPNP/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_7/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0923VNPNP&psc=1
+      - link "4.3 out of 5 stars, 10,586 ratings":
+        - /url: /product-reviews/B0923VNPNP/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_7_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0923VNPNP
+      - link "-14%":
+        - /url: /Airspeed-Ultra-Lightweight-Compact-Bagless-Replacement/dp/B0923VNPNP/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_7/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0923VNPNP&psc=1
+      - link "$59.97":
+        - /url: /Airspeed-Ultra-Lightweight-Compact-Bagless-Replacement/dp/B0923VNPNP/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_7/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0923VNPNP&psc=1
+      - 'link "List: $69.99"':
+        - /url: /Airspeed-Ultra-Lightweight-Compact-Bagless-Replacement/dp/B0923VNPNP/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_7/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B0923VNPNP&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping by Amazon
+      - button "Add to cart, Eureka Vacuum Cleaners for Home,Airspeed Ultra-Lightweight, NEU10AE5 | Senior-Friendly 7.7 lb Pet Hair Upright Vacuum, Carpet & Hard Floor, Brush, Crevice Tool, Washable Filter, Blue"
+    - listitem:
+      - link "HomeHacks 2 Pack Large Laundry Baskets, Laundry Hampers Bags (Grey 75Lx2) | Waterproof, Freestanding, Collapsible Clothes Hamper with Reinforced Handles in Laundry Room, Dorm, Bathroom, Bedroom":
+        - /url: /HomeHacks-Large-Laundry-Baskets-Hampers/dp/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1&psc=1
+      - link "4.5 out of 5 stars, 25,972 ratings":
+        - /url: /product-reviews/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8_cr/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1
+      - link "-40%":
+        - /url: /HomeHacks-Large-Laundry-Baskets-Hampers/dp/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1&psc=1
+      - link "$11.99":
+        - /url: /HomeHacks-Large-Laundry-Baskets-Hampers/dp/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1&psc=1
+      - link "($6.00/count)":
+        - /url: /HomeHacks-Large-Laundry-Baskets-Hampers/dp/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1&psc=1
+      - 'link "List Price: $19.99"':
+        - /url: /HomeHacks-Large-Laundry-Baskets-Hampers/dp/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1&psc=1
+      - text: Get it as soon as Friday, Aug 21 FREE Shipping on orders over $35 shipped by Amazon
+      - link "See all buying options":
+        - /url: /HomeHacks-Large-Laundry-Baskets-Hampers/dp/B09KT67BL1/ref=pd_cart_d_dex_com_cart_typ_t1_d_sccl_1_8_atc_o/147-7867225-8609832?pd_rd_w=g2vR0&content-id=amzn1.sym.3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_p=3e6f2a7a-acc0-4c3e-99de-7fc144f51128&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&pd_rd_i=B09KT67BL1&psc=1
+  - heading "Shopping Cart" [level=2]
+  - link "Deselect all items":
+    - /url: "#"
+  - list "Shopping Cart":
+    - listitem:
+      - checkbox "Select TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black for checkout" [checked]
+      - link "TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black":
+        - /url: /gp/product/B0DSKDP4SF/ref=ox_sc_act_title_1?smid=A1GYS81X1I9156&psc=1
+        - heading "TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black" [level=3]
+      - text: "Limited time deal -29% $42.47 List Price: $59.99 List Price: null In Stock FREE delivery Fri, Aug 21 available at checkout"
+      - link "FREE Returns":
+        - /url: "#"
+      - checkbox "This is a gift This is a gift Learn more"
+      - text: This is a gift
+      - link "This is a gift Learn more":
+        - /url: /gp/help/customer/display.html/ref=ord_cart_shr?pop-up=1&nodeId=759346
+      - list: "Color: Black"
+      - group "Quantity is 1":
+        - button "Delete TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black"
+        - text: 1 1
+        - button "Increase quantity by one, Quantity is 1, TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black"
+      - button "Delete TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black": Delete
+      - button "Save for later TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black": Save for later
+      - button "Compare with similar items TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black": Compare with similar items
+      - link "Share TPWIN Bluetooth Speaker - 80W Loud Rugged Outdoor Speakers, IPX6 Waterproof, 20H Playtime, Deep Bass, Lightshow, TWS, BT 5.3 Wireless, Portable for Travel Hiking Camping Beach Pool - Black":
+        - /url: "#"
+        - text: Share
+    - listitem:
+      - 'checkbox "Select ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black) for checkout" [checked]'
+      - 'link "ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"':
+        - /url: /gp/product/B0DHX88N8Z/ref=ox_sc_act_title_2?smid=ATVPDKIKX0DER&psc=1
+        - 'heading "ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)" [level=3]'
+      - text: $69.99 Only 2 left in stock - order soon. FREE delivery Aug 23 - 26 available at checkout
+      - link "FREE Returns":
+        - /url: "#"
+      - checkbox "This is a gift This is a gift Learn more"
+      - text: This is a gift
+      - link "This is a gift Learn more":
+        - /url: /gp/help/customer/display.html/ref=ord_cart_shr?pop-up=1&nodeId=759346
+      - list: "Color: Black"
+      - group "Quantity is 1":
+        - 'button "Delete ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"'
+        - text: 1 1
+        - 'button "Increase quantity by one, Quantity is 1, ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"'
+      - 'button "Delete ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"': Delete
+      - 'button "Save for later ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"': Save for later
+      - 'button "Compare with similar items ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"': Compare with similar items
+      - 'link "Share ANCOON Speakers Bluetooth Wireless: 80W(Peak) Loud Speaker with Bass, 20H Playtime, IPX6 Waterproof, Large Jobsite Speakers for Work, Outdoor, Workshop, Garage, Portable Speaker with TWS (Black)"':
+        - /url: "#"
+        - text: Share
+  - text: "Subtotal (2 items): $112.46"
+  - heading "Your Items" [level=3]
+  - tablist:
+    - tab "Saved for later" [selected]
+    - tab "Buy it again"
+  - tabpanel "Saved for later":
+    - listitem:
+      - link "Bazooka 36-inch G2 Bluetooth Party Bar Speaker, IP66 Waterproof, 450W | LED lights, Party Button music sharing, 10 marine grade speakers, USB charging, ATV golf cart boat":
+        - /url: /gp/product/B07C437YLG/ref=ox_sc_saved_title_1?smid=APHNWNMI3M9V3&psc=1
+        - heading "Bazooka 36-inch G2 Bluetooth Party Bar Speaker, IP66 Waterproof, 450W | LED lights, Party Button music sharing, 10 marine grade speakers, USB charging, ATV golf cart boat" [level=3]
+      - text: $370.00 In Stock
+      - link "FREE Returns":
+        - /url: "#"
+      - list: "Size: 36 inch Style: Single Sided"
+      - button "Move to cart Bazooka 36-inch G2 Bluetooth Party Bar Speaker, IP66 Waterproof, 450W | LED lights, Party Button music sharing, 10 marine grade speakers, USB charging, ATV golf cart boat": Move to cart
+      - button "Delete Bazooka 36-inch G2 Bluetooth Party Bar Speaker, IP66 Waterproof, 450W | LED lights, Party Button music sharing, 10 marine grade speakers, USB charging, ATV golf cart boat": Delete
+      - button "Add to list Bazooka 36-inch G2 Bluetooth Party Bar Speaker, IP66 Waterproof, 450W | LED lights, Party Button music sharing, 10 marine grade speakers, USB charging, ATV golf cart boat": Add to list
+      - button "Compare with similar items Bazooka 36-inch G2 Bluetooth Party Bar Speaker, IP66 Waterproof, 450W | LED lights, Party Button music sharing, 10 marine grade speakers, USB charging, ATV golf cart boat": Compare with similar items
+  - paragraph:
+    - text: The price and availability of items at Amazon.com are subject to change. The Cart is a temporary place to store a list of your items and reflects each item's most recent price.
+    - link "Shopping Cart Learn more":
+      - /url: /gp/help/customer/display.html/ref=ord_cart_lm?nodeId=GF3GA88LAZ36ZMSQ
+  - paragraph: Do you have a gift card or promotional code? We'll ask you to enter your claim code when it's time to pay.
+- group:
+  - heading "Products related to items in your cart" [level=2]
+  - button "Leave feedback on Sponsored ad": Sponsored
+  - group:
+    - list:
+      - listitem:
+        - link "Pyle 600W Outdoor Bluetooth Speaker System | Marine Grade Active and Passive 2-Way Stereo Speakers with Built-In Amplifier | Home, Boat, Patio, Pool and Outdoor Use | RCA Inputs (Pair)":
+          - /url: /dp/B00ZGET6SM/ref=pd_cart_sspa_dk_ct_pt_sub_0/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAwODU5MzI3MTAxMDAyOjowOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+        - link "4.3 out of 5 stars 319 ratings":
+          - /url: /dp/B00ZGET6SM/ref=pd_cart_sspa_dk_ct_pt_sub_0/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAwODU5MzI3MTAxMDAyOjowOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: 4.3 out of 5 stars 319
+        - link "$209.99 Amazon Prime":
+          - /url: /dp/B00ZGET6SM/ref=pd_cart_sspa_dk_ct_pt_sub_0/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAwODU5MzI3MTAxMDAyOjowOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: $209.99
+          - img "Amazon Prime"
+        - button "Add to cart, Pyle 600W Outdoor Bluetooth Speaker System | Marine Grade Active and Passive 2-Way Stereo Speakers with Built-In Amplifier | Home, Boat, Patio, Pool and Outdoor Use | RCA Inputs (Pair)"
+      - listitem:
+        - link "Bluetooth Speaker Wireless,IP67 Waterproof & Dustproof Portable Speaker with Lights,15W Loud Stereo Sound, 2500mAh Battery All Day Playtime, TWS Pairing, BT5.3, Home/Party/Outdoor/Beach (Black)":
+          - /url: /dp/B0D7BWV74T/ref=pd_cart_sspa_dk_ct_pt_sub_1/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMDcyMDg5MzA0NTAyOjoxOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+        - link "4.6 out of 5 stars 4,579 ratings":
+          - /url: /dp/B0D7BWV74T/ref=pd_cart_sspa_dk_ct_pt_sub_1/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMDcyMDg5MzA0NTAyOjoxOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: 4.6 out of 5 stars 4,579
+        - link "$19.99 Amazon Prime":
+          - /url: /dp/B0D7BWV74T/ref=pd_cart_sspa_dk_ct_pt_sub_1/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMDcyMDg5MzA0NTAyOjoxOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: $19.99
+          - img "Amazon Prime"
+        - button "Add to cart, Bluetooth Speaker Wireless,IP67 Waterproof & Dustproof Portable Speaker with Lights,15W Loud Stereo Sound, 2500mAh Battery All Day Playtime, TWS Pairing, BT5.3, Home/Party/Outdoor/Beach (Black)"
+      - listitem:
+        - link "AIWA - Exos Home 30W Bluetooth Speaker with CD Player and FM Radio":
+          - /url: /dp/B0CP4BNG2B/ref=pd_cart_sspa_dk_ct_pt_sub_2/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTY2Mzc2NTcyMzAyOjoyOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+        - link "4.1 out of 5 stars 1,962 ratings":
+          - /url: /dp/B0CP4BNG2B/ref=pd_cart_sspa_dk_ct_pt_sub_2/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTY2Mzc2NTcyMzAyOjoyOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: 4.1 out of 5 stars 1,962
+        - link "$159.99 Amazon Prime":
+          - /url: /dp/B0CP4BNG2B/ref=pd_cart_sspa_dk_ct_pt_sub_2/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTY2Mzc2NTcyMzAyOjoyOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: $159.99
+          - img "Amazon Prime"
+        - button "Add to cart, AIWA - Exos Home 30W Bluetooth Speaker with CD Player and FM Radio"
+      - listitem:
+        - 'link "RWN Outdoor Bluetooth Speaker: 160W Loud Sound, IP67 Waterproof with 24H Playtime, Fast Charge, Bass, TWS, Portable Wireless Speakers with Light Show for House, Party, Projector, Beach (Black)"':
+          - /url: /dp/B0G6Z8K1CD/ref=pd_cart_sspa_dk_ct_pt_sub_3/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTM5MTYyNzU3OTAyOjozOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+        - link "4.4 out of 5 stars 108 ratings":
+          - /url: /dp/B0G6Z8K1CD/ref=pd_cart_sspa_dk_ct_pt_sub_3/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTM5MTYyNzU3OTAyOjozOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: 4.4 out of 5 stars 108
+        - link "$119.99 Amazon Prime":
+          - /url: /dp/B0G6Z8K1CD/ref=pd_cart_sspa_dk_ct_pt_sub_3/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTM5MTYyNzU3OTAyOjozOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: $119.99
+          - img "Amazon Prime"
+        - link "See options":
+          - /url: /dp/B0G6Z8K1CD/ref=pd_cart_sspa_dk_ct_pt_sub_3/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMTM5MTYyNzU3OTAyOjozOjo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+      - listitem:
+        - link "Bose SoundLink Flex Bluetooth Speaker (2nd Gen) - Portable Outdoor Speaker with Hi-Fi Audio, Waterproof and Dustproof, USB-C, Up to 12 Hours Battery Life, Blue Dusk":
+          - /url: /dp/B0D6WB7BV6/ref=pd_cart_sspa_dk_ct_pt_sub_4/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMjI2NzI3MTIzMzAyOjo0Ojo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+        - link "4.7 out of 5 stars 12,727 ratings":
+          - /url: /dp/B0D6WB7BV6/ref=pd_cart_sspa_dk_ct_pt_sub_4/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMjI2NzI3MTIzMzAyOjo0Ojo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: 4.7 out of 5 stars 12,727
+        - link "$119.99 Amazon Prime":
+          - /url: /dp/B0D6WB7BV6/ref=pd_cart_sspa_dk_ct_pt_sub_4/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAxMjI2NzI3MTIzMzAyOjo0Ojo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: $119.99
+          - img "Amazon Prime"
+        - button "Add to cart, Bose SoundLink Flex Bluetooth Speaker (2nd Gen) - Portable Outdoor Speaker with Hi-Fi Audio, Waterproof and Dustproof, USB-C, Up to 12 Hours Battery Life, Blue Dusk"
+      - listitem:
+        - link "1MORE Quad Driver in-Ear Earphones Hi-Res High Fidelity Headphones Warm Bass, Spacious Reproduction, High Resolution, Mic in-Line Remote Smartphones/PC/Tablet - Silver/Gray":
+          - /url: /dp/B06XSJV5B9/ref=pd_cart_sspa_dk_ct_pt_sub_5/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAwNjY0Nzg1OTg1NDAyOjo1Ojo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+        - link "4.2 out of 5 stars 2,969 ratings":
+          - /url: /dp/B06XSJV5B9/ref=pd_cart_sspa_dk_ct_pt_sub_5/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAwNjY0Nzg1OTg1NDAyOjo1Ojo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: 4.2 out of 5 stars 2,969
+        - link "$119.69 Amazon Prime":
+          - /url: /dp/B06XSJV5B9/ref=pd_cart_sspa_dk_ct_pt_sub_5/?_encoding=UTF8&ie=UTF8&psc=1&spc=MTo3NDkxODEzOTMzNTc3NzI1OjE3ODY4OTE5MjY6c3BfY2FydF9wZXJjb2xhdGU6MzAwNjY0Nzg1OTg1NDAyOjo1Ojo%3D&sp_csd=d2lkZ2V0TmFtZT1zcF9jYXJ0X3BlcmNvbGF0ZQ%3D%3D&pd_rd_w=HPh4r&content-id=amzn1.sym.242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_p=242605be-88c0-4b92-99ab-db4f9667f3a2&pf_rd_r=KMT0HKT88A5QGAJSJ4B4&pd_rd_wg=qZmqT&pd_rd_r=21ac76c2-213f-4cbc-9f47-ba4c97f83505&ref_=pd_cart_sspa_dk_ct_pt_sub
+          - text: $119.69
+          - img "Amazon Prime"
+        - button "Add to cart, 1MORE Quad Driver in-Ear Earphones Hi-Res High Fidelity Headphones Warm Bass, Spacious Reproduction, High Resolution, Mic in-Line Remote Smartphones/PC/Tablet - Silver/Gray"
+- complementary "Your recently viewed items and featured recommendations"
+- button "Back to top"
+- heading "Get to Know Us" [level=6]
+- list:
+  - listitem:
+    - link "Careers":
+      - /url: https://www.amazon.jobs
+  - listitem:
+    - link "Amazon Newsletter":
+      - /url: https://www.aboutamazon.com/subscribe?utm_source=amazon_com&utm_medium=amazonfooter&utm_campaign=newslettersubscribers&utm_term=amazonnewssignup
+  - listitem:
+    - link "About Amazon":
+      - /url: https://www.aboutamazon.com/?utm_source=gateway&utm_medium=footer&token=about
+  - listitem:
+    - link "Accessibility":
+      - /url: https://www.amazon.com/b?node=15701038011&ie=UTF8
+  - listitem:
+    - link "Sustainability":
+      - /url: https://sustainability.aboutamazon.com/?utm_source=gateway&utm_medium=footer&ref_=susty_footer
+  - listitem:
+    - link "Press Center":
+      - /url: https://www.amazon.com/pr
+  - listitem:
+    - link "Investor Relations":
+      - /url: https://www.amazon.com/ir
+  - listitem:
+    - link "Amazon Devices":
+      - /url: /gp/browse.html?node=2102313011&ref_=footer_devices
+  - listitem:
+    - link "Amazon Science":
+      - /url: https://www.amazon.science
+- heading "Make Money with Us" [level=6]
+- list:
+  - listitem:
+    - link "Sell on Amazon":
+      - /url: https://sell.amazon.com/?ld=AZFSSOA_FTSELL-C&ref_=footer_soa
+  - listitem:
+    - link "Sell apps on Amazon":
+      - /url: https://developer.amazon.com
+  - listitem:
+    - link "Supply to Amazon":
+      - /url: https://supply.amazon.com
+  - listitem:
+    - link "Protect & Build Your Brand":
+      - /url: https://sell.amazon.com/brand-registry?ld=AZUSSOA_ABR-FT
+  - listitem:
+    - link "Become an Affiliate":
+      - /url: https://affiliate-program.amazon.com/
+  - listitem:
+    - link "Become a Delivery Driver":
+      - /url: https://dspjobhub.com/
+  - listitem:
+    - link "Start a Package Delivery Business":
+      - /url: https://logistics.amazon.com/marketing?utm_source=amzn&utm_medium=footer&utm_campaign=home
+  - listitem:
+    - link "Advertise Your Products":
+      - /url: https://advertising.amazon.com/?ref=ext_amzn_ftr
+  - listitem:
+    - link "Self-Publish with Us":
+      - /url: /gp/seller-account/mm-summary-page.html?ld=AZFooterSelfPublish&topic=200260520&ref_=footer_publishing
+  - listitem:
+    - link "Become an Amazon Hub Partner":
+      - /url: https://www.amazon.com/b?node=216188543011
+  - listitem:
+    - link "See More Ways to Make Money":
+      - /url: /b/?node=18190131011&ld=AZUSSOA-seemore&ref_=footer_seemore
+- heading "Amazon Payment Products" [level=6]
+- list:
+  - listitem:
+    - link "Amazon Visa":
+      - /url: /iss/credit/rewardscardmember?plattr=CBFOOT&ref_=footer_cbcc
+  - listitem:
+    - link "Amazon Store Card":
+      - /url: /credit/storecard/member?plattr=PLCCFOOT&ref_=footer_plcc
+  - listitem:
+    - link "Amazon Secured Card":
+      - /url: /dp/product/B084KP3NG6?plattr=SCFOOT&ref_=footer_ACB
+  - listitem:
+    - link "Amazon Business Card":
+      - /url: /dp/B0DVBL912R?plattr=ACOMFO&ie=UTF-8
+  - listitem:
+    - link "Shop with Points":
+      - /url: https://www.amazon.com/hp/shopwithpoints/servicing
+  - listitem:
+    - link "Credit Card Marketplace":
+      - /url: /gp/browse.html?node=3561432011&ref_=footer_ccmp
+  - listitem:
+    - link "Reload Your Balance":
+      - /url: /gp/browse.html?node=10232440011&ref_=footer_reload_us
+  - listitem:
+    - link "Gift Cards":
+      - /url: https://www.amazon.com/b/?node=2238192011&ref=shop_footer_payments_gc_desktop
+  - listitem:
+    - link "Amazon Currency Converter":
+      - /url: /gp/browse.html?node=388305011&ref_=footer_tfx
+- heading "Let Us Help You" [level=6]
+- list:
+  - listitem:
+    - link "Your Account":
+      - /url: https://www.amazon.com/gp/css/homepage.html?ref_=footer_ya
+  - listitem:
+    - link "Your Orders":
+      - /url: https://www.amazon.com/gp/css/order-history?ref_=footer_yo
+  - listitem:
+    - link "Shipping Rates & Policies":
+      - /url: /gp/help/customer/display.html?nodeId=468520&ref_=footer_shiprates
+  - listitem:
+    - link "Amazon Prime":
+      - /url: /gp/prime?ref_=footer_prime
+  - listitem:
+    - link "Returns & Replacements":
+      - /url: /gp/css/returns/homepage.html?ref_=footer_hy_f_4
+  - listitem:
+    - link "Manage Your Content and Devices":
+      - /url: /hz/mycd/myx?ref_=footer_myk
+  - listitem:
+    - link "Recalls and Product Safety Alerts":
+      - /url: https://www.amazon.com/product-safety-alerts?ref_=footer_bsx_ypsa
+  - listitem:
+    - link "Registry & Gift List":
+      - /url: /registries?ref_=nav_footer_registry_giftlist_desktop
+  - listitem:
+    - link "Help":
+      - /url: /gp/help/customer/display.html?nodeId=508510&ref_=footer_gw_m_b_he
+- link "Amazon US Home":
+  - /url: /?ref_=footer_logo
+- link "Choose a language for shopping. Current selection is English.":
+  - /url: /customer-preferences/edit?ie=UTF8&preferencesReturnUrl=%2F&ref_=footer_lang
+  - text: English
+- button "Expand to Change Language or Country"
+- button "Choose a country/region for shopping. The current selection is United States.": United States
+- navigation "More on Amazon":
+  - list:
+    - listitem:
+      - link "Amazon Music Stream millions of songs":
+        - /url: https://music.amazon.com?ref=dm_aff_amz_com
+        - heading "Amazon Music" [level=5]
+        - text: Stream millions of songs
+    - listitem:
+      - link "Amazon Ads Reach customers wherever they spend their time":
+        - /url: https://advertising.amazon.com/?ref=footer_advtsing_amzn_com
+        - heading "Amazon Ads" [level=5]
+        - text: Reach customers wherever they spend their time
+    - listitem:
+      - link "6pm Score deals on fashion brands":
+        - /url: https://www.6pm.com
+        - heading "6pm" [level=5]
+        - text: Score deals on fashion brands
+    - listitem:
+      - link "AbeBooks Books, art & collectibles":
+        - /url: https://www.abebooks.com
+        - heading "AbeBooks" [level=5]
+        - text: Books, art & collectibles
+    - listitem:
+      - link "ACX Audiobook Publishing Made Easy":
+        - /url: https://www.acx.com/
+        - heading "ACX" [level=5]
+        - text: Audiobook Publishing Made Easy
+    - listitem:
+      - link "Sell on Amazon Start a Selling Account":
+        - /url: https://sell.amazon.com/?ld=AZUSSOA-footer-aff&ref_=footer_sell
+        - heading "Sell on Amazon" [level=5]
+        - text: Start a Selling Account
+    - listitem:
+      - link "Veeqo Shipping Software Inventory Management":
+        - /url: https://www.veeqo.com/?utm_source=amazon&utm_medium=website&utm_campaign=footer
+        - heading "Veeqo" [level=5]
+        - text: Shipping Software Inventory Management
+  - list:
+    - listitem:
+      - link "Amazon Business Everything For Your Business":
+        - /url: /business?ref_=footer_retail_b2b
+        - heading "Amazon Business" [level=5]
+        - text: Everything For Your Business
+    - listitem:
+      - link "Groceries at Amazon Groceries & More Right To Your Door":
+        - /url: /fmc/grocery-gateway?almBrandId=fe16aGPfFs46S&ref_=footer_groceries
+        - heading "Groceries at Amazon" [level=5]
+        - text: Groceries & More Right To Your Door
+    - listitem:
+      - link "AmazonGlobal Ship Orders Internationally":
+        - /url: /gp/browse.html?node=20338496011&ref_=footer_amazonglobal
+        - heading "AmazonGlobal" [level=5]
+        - text: Ship Orders Internationally
+    - listitem:
+      - link "Home Services Experienced Pros Happiness Guarantee":
+        - /url: /services?ref_=footer_services
+        - heading "Home Services" [level=5]
+        - text: Experienced Pros Happiness Guarantee
+    - listitem:
+      - link "Amazon Web Services Scalable Cloud Computing Services":
+        - /url: https://aws.amazon.com/what-is-cloud-computing/?sc_channel=EL&sc_campaign=amazonfooter
+        - heading "Amazon Web Services" [level=5]
+        - text: Scalable Cloud Computing Services
+    - listitem:
+      - link "Audible Listen to Books & Original Audio Performances":
+        - /url: https://www.audible.com
+        - heading "Audible" [level=5]
+        - text: Listen to Books & Original Audio Performances
+    - listitem:
+      - link "Box Office Mojo Find Movie Box Office Data":
+        - /url: https://www.boxofficemojo.com/?ref_=amzn_nav_ftr
+        - heading "Box Office Mojo" [level=5]
+        - text: Find Movie Box Office Data
+  - list:
+    - listitem:
+      - link "Goodreads Book reviews & recommendations":
+        - /url: https://www.goodreads.com
+        - heading "Goodreads" [level=5]
+        - text: Book reviews & recommendations
+    - listitem:
+      - link "IMDb Movies, TV & Celebrities":
+        - /url: https://www.imdb.com
+        - heading "IMDb" [level=5]
+        - text: Movies, TV & Celebrities
+    - listitem:
+      - link "IMDbPro Get Info Entertainment Professionals Need":
+        - /url: https://pro.imdb.com?ref_=amzn_nav_ftr
+        - heading "IMDbPro" [level=5]
+        - text: Get Info Entertainment Professionals Need
+    - listitem:
+      - link "Kindle Direct Publishing Indie Digital & Print Publishing Made Easy":
+        - /url: https://kdp.amazon.com
+        - heading "Kindle Direct Publishing" [level=5]
+        - text: Indie Digital & Print Publishing Made Easy
+    - listitem:
+      - link "Amazon Photos Unlimited Photo Storage Free With Prime":
+        - /url: /gp/browse.html?node=13234696011&ref_=_gno_p_foot
+        - heading "Amazon Photos" [level=5]
+        - text: Unlimited Photo Storage Free With Prime
+    - listitem:
+      - link "Prime Video Direct Video Distribution Made Easy":
+        - /url: https://videodirect.amazon.com/home/landing
+        - heading "Prime Video Direct" [level=5]
+        - text: Video Distribution Made Easy
+    - listitem:
+      - link "Shopbop Designer Fashion Brands":
+        - /url: https://www.shopbop.com
+        - heading "Shopbop" [level=5]
+        - text: Designer Fashion Brands
+  - list:
+    - listitem:
+      - link "Amazon Resale Great Deals on Quality Used Products":
+        - /url: /gp/browse.html?node=10158976011&ref_=footer_wrhsdls
+        - heading "Amazon Resale" [level=5]
+        - text: Great Deals on Quality Used Products
+    - listitem:
+      - link "Whole Foods Market America’s Healthiest Grocery Store":
+        - /url: https://www.wholefoodsmarket.com
+        - heading "Whole Foods Market" [level=5]
+        - text: America’s Healthiest Grocery Store
+    - listitem:
+      - link "Woot! Deals and Shenanigans":
+        - /url: https://www.woot.com/
+        - heading "Woot!" [level=5]
+        - text: Deals and Shenanigans
+    - listitem:
+      - link "Zappos Shoes & Clothing":
+        - /url: https://www.zappos.com
+        - heading "Zappos" [level=5]
+        - text: Shoes & Clothing
+    - listitem:
+      - link "Ring Smart Home Security Systems":
+        - /url: https://ring.com
+        - heading "Ring" [level=5]
+        - text: Smart Home Security Systems
+    - listitem:
+      - link "eero WiFi Stream 4K Video in Every Room":
+        - /url: https://eero.com/
+        - heading "eero WiFi" [level=5]
+        - text: Stream 4K Video in Every Room
+    - listitem:
+      - link "Blink Smart Security for Every Home":
+        - /url: https://blinkforhome.com/?ref=nav_footer
+        - heading "Blink" [level=5]
+        - text: Smart Security for Every Home
+  - list:
+    - listitem:
+      - link "Neighbors App Real-Time Crime & Safety Alerts":
+        - /url: https://shop.ring.com/pages/neighbors-app
+        - heading "Neighbors App" [level=5]
+        - text: Real-Time Crime & Safety Alerts
+    - listitem:
+      - link "PillPack Pharmacy Simplified":
+        - /url: https://www.pillpack.com
+        - heading "PillPack" [level=5]
+        - text: Pharmacy Simplified
+    - listitem:
+      - link "Amazon Renewed Refurbished tech you can trust":
+        - /url: /gp/browse.html?node=12653393011&ref_=footer_usrenew
+        - heading "Amazon Renewed" [level=5]
+        - text: Refurbished tech you can trust
+- list:
+  - listitem:
+    - link "Conditions of Use":
+      - /url: /gp/help/customer/display.html?nodeId=508088&ref_=footer_cou
+  - listitem:
+    - link "Privacy Notice":
+      - /url: /gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ&ref_=footer_privacy
+  - listitem:
+    - link "Consumer Health Data Privacy Disclosure":
+      - /url: /gp/help/customer/display.html?ie=UTF8&nodeId=TnACMrGVghHocjL8KB&ref_=footer_consumer_health_data_privacy
+  - listitem:
+    - link "Your Ads Privacy Choices":
+      - /url: /privacyprefs?ref_=footer_iba
+  - listitem
+- text: © 1996-2026, Amazon.com, Inc. or its affiliates
+```
+
+# Test source
+
+```ts
+  1  | import { expect } from '@playwright/test';
+  2  | import { test } from '../Fixture/BaseFixture'
+  3  | import commonData from '../TestData/CommonData.json'
+  4  | import testData from '../TestData/Data.json'
+  5  | import { CartPage } from '../Pages/CartPage';
+  6  | 
+  7  | 
+  8  | test.beforeEach(async ({ page, commonPage }) => {
+  9  |     await commonPage.HitURl(commonData.HitUrl.Url);
+  10 |     await page.waitForTimeout(3000);
+  11 |     await expect(page).toHaveTitle("Amazon.com. Spend less. Smile more.");
+  12 |     if (await commonPage.clickOnContinueShopping.isVisible()) {
+  13 |         await commonPage.clickOnContinueShoppingBtn();
+  14 |     }
+  15 |     await commonPage.ClickOnSingInIcon();
+  16 |     await commonPage.enterEmailID(commonData.Login.emailID);
+  17 |     await commonPage.clickOnCounty();
+  18 |     await commonPage.enterPassword(commonData.Login.password);
+  19 |     await commonPage.clickOnSingIn();
+  20 | }
+  21 | )
+  22 | 
+  23 | 
+  24 | // test("verify Amazon ", async ({ page, homePage, searchResultPage, cartPage, checkoutPage, productPage }) => {
+  25 | 
+  26 | //     await homePage.SearchBox(testData.Search.searched);
+  27 | //     await expect(homePage.SearchedProduct).toBeVisible();
+  28 | //     await homePage.clickOnSearchedProduct();
+  29 | //     await page.waitForTimeout(4000);
+  30 | //     await searchResultPage.clickOnProduct();
+  31 | //     await expect(productPage.addToCart).toBeVisible();
+  32 | //     await productPage.clickOnAddToCart();
+  33 | 
+  34 | //     await cartPage.clickOnproceedBtn();
+  35 | //     await page.waitForTimeout(4000);
+  36 | //     await expect(checkoutPage.newDeliveryAddress).toBeVisible();
+  37 | 
+  38 | //     await checkoutPage.clickOnNewDeliveryAddress();
+  39 | //     await page.waitForTimeout(3000);
+  40 | //     await checkoutPage.clickOnSelectCountry(testData.DeliveryAddress.country);
+  41 | //     await page.waitForTimeout(3000);
+  42 | //     await checkoutPage.enterFullName(testData.DeliveryAddress.fullName);
+  43 | //     await checkoutPage.enterAddress(testData.DeliveryAddress.address);
+  44 | //     await checkoutPage.enterLandMark(testData.DeliveryAddress.LandMark);
+  45 | //     await checkoutPage.enterCityName(testData.DeliveryAddress.City);
+  46 | //     await checkoutPage.enterStateName(testData.DeliveryAddress.StateName);
+  47 | //     await checkoutPage.enterZipCode(testData.DeliveryAddress.ZipCode);
+  48 | //     await checkoutPage.enterPhoneNumber(testData.DeliveryAddress.PhoneNumber);
+  49 | 
+  50 | // });
+  51 | 
+  52 | test("Scenario 02 Product Validation ", async ({ page, commonPage, cartPage }) => {
+  53 |     await commonPage.clickOnAddProductToTheCart();
+> 54 |     await expect(cartPage.beforQty).toBeVisible();
+     |                                     ^ Error: expect(locator).toBeVisible() failed
+  55 |     await cartPage.clickOnPluseBtn();
+  56 |     await page.waitForTimeout(4000);
+  57 | 
+  58 |     await expect(cartPage.afterQty).toBeVisible();
+  59 |     await cartPage.clickOnDeleteBtn();
+  60 | 
+  61 | 
+  62 | 
+  63 | 
+  64 | })
+```
