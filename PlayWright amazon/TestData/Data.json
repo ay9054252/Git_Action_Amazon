@@ -1,0 +1,21 @@
+{
+     "Search":{
+
+        "searched":"Boat speaker wa"
+
+    },
+
+ "DeliveryAddress":{
+        
+        "country": "India",
+        "fullName": "Ashish yadav",
+        "address": "MirzaPur Road",
+        "LandMark": "Bhadohi",
+        "City": "Mirzapur",
+        "StateName": "UP",
+        "ZipCode": "221314",
+        "PhoneNumber": "883647862"
+       
+}
+
+}
